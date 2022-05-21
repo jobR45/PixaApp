@@ -1,0 +1,166 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+ext{
+    //application
+    MIN_SDK_VERSION = 21
+    TARGET_SDK_VERSION = 32
+    COMPILE_SDK_VERSION = 32
+    VERSION_NAME = '1.0'
+    VERSION_CODE = 1
+
+
+    //default
+    ktx_version = '1.7.0'
+    material_version = '1.5.0'
+    constraint_version = '2.1.4'
+    fragment_ktx_version = '2.4.2'
+    legacy_version = '1.0.0'
+    junit_version = '4.13.2'
+    espresso_version = '3.4.0'
+
+
+    //dependencies
+    kotlin_version = "1.6.10"
+    lifecycle_version = "2.5.0-rc01"
+    hilt_nav_fragment = '1.0.0'
+    lifecycle_livedata_ktx = '2.3.0'
+    lifecycle_viewmodel_ktx = '2.3.0'
+    app_compat_version = '1.4.1'
+    room_version = '2.5.0-alpha01'
+    kapt_room_version = '2.4.2'
+    card_view_version = '1.0.0'
+    retrofit_version = "2.5.0"
+    rxjava_adapter_version = "2.3.0"
+    rxjava_library_version = "2.0.2"
+    moshi_version = "1.13.0"
+    moshi_converter_version = "2.9.0"
+    glide_version = "4.12.0"
+    paging_version = "3.1.1"
+    swipe_refresh_version = "1.1.0"
+    logging_interceptor_version = "4.9.3"
+    kotlin_coroutines_version = "1.1.0"
+    retrofit_coroutines_adapter_version = "0.9.2"
+
+}
+
+android {
+
+    compileSdk COMPILE_SDK_VERSION
+
+    defaultConfig {
+        applicationId "com.example.framework.githubrepo"
+        minSdk MIN_SDK_VERSION
+        targetSdk TARGET_SDK_VERSION
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-DEBUG'
+            buildConfigField("String", "API_KEY", '"27545368-c38b2040fe7064fe46c3a3258"')
+            buildConfigField("String", "BASE_URL", '"https://pixabay.com/"')
+
+        }
+        release {
+            minifyEnabled false
+            buildConfigField("String", "API_KEY", '"27545368-c38b2040fe7064fe46c3a3258"')
+            buildConfigField("String", "BASE_URL", '"https://pixabay.com/"')
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    implementation "androidx.core:core-ktx:$ktx_version"
+    implementation "androidx.appcompat:appcompat:$app_compat_version"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$fragment_ktx_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$fragment_ktx_version"
+    implementation "androidx.legacy:legacy-support-v4:$legacy_version"
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+
+
+    //hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    implementation "androidx.hilt:hilt-navigation-fragment:$hilt_nav_fragment"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+
+    // Moshi
+    implementation("com.squareup.moshi:moshi:$moshi_version")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshi_version")
+    implementation"com.squareup.retrofit2:converter-moshi:$moshi_converter_version"
+    implementation("com.squareup.moshi:moshi-kotlin:$moshi_version")
+
+    //room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$kapt_room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // ViewModel utilities for Compose
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    // Saved state module for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+
+    //pagination
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    testImplementation "androidx.paging:paging-common:$paging_version"
+    implementation "androidx.paging:paging-rxjava2:$paging_version"
+    implementation "androidx.room:room-paging:$room_version"
+
+
+    //Rxjava
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxjava_adapter_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxjava_library_version"
+
+    //swipe refresh
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_version"
+
+    //Logging Interceptor
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
+
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
+
+    // Retrofit Coroutines Support
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofit_coroutines_adapter_version"
+
+}

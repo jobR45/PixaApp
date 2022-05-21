@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="image"
+            type="com.anypli.pixabayapp.data.model.Hits" />
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_global_2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <ImageView
+                android:id="@+id/image_art_item1"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                imageUrl="@{image.previewURL}"
+                requestManager = "@{requestManager}"
+                placeholder="@{@drawable/ic_placeholder}"
+                android:src="@drawable/ic_placeholder"
+
+                />
+            <TextView
+                android:id="@+id/tv_name_user"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text='@{image.user}'
+                tools:text="this is title art"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_12sp"/>
+            <TextView
+                android:id="@+id/tv_price_item1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                tools:text="200$"
+                android:textColor="@color/gray_graphite"
+                android:textSize="@dimen/font_12sp"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

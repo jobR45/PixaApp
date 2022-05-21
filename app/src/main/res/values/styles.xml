@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- Text Views -->
+    <style name="TextView" />
+
+    <style name="TextView.Black" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/black_light</item>
+        <item name="android:textSize">@dimen/font_15sp</item>
+
+    </style>
+
+    <style name="TextView.BlackLight" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/black_graphite</item>
+        <item name="android:textSize">@dimen/font_15sp</item>
+    </style>
+
+    <style name="TextView.BlackBold" parent="android:Widget.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_16sp</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+        <item name="android:textColor">@color/black_light</item>
+        <item name="android:drawablePadding">@dimen/padding_global_7dp</item>
+    </style>
+
+
+    <!-- Edit texts-->
+    <style name="EditText"/>
+
+    <style name="EditText.Global" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:inputType">text</item>
+        <item name="android:textSize">@dimen/font_20sp</item>
+        <item name="android:hint">@string/global_search</item>
+        <item name="android:textColorHint">@color/gray_graphite</item>
+        <item name="android:paddingStart">@dimen/padding_global_5dp</item>
+    </style>
+
+
+    <!-- Buttons-->
+    <style name="Button"/>
+
+    <style name="Button.Global" parent="TextAppearance.AppCompat.Button">
+
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/font_18sp </item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:paddingStart">@dimen/padding_global_20dp</item>
+        <item name="android:paddingEnd">@dimen/padding_global_20dp</item>
+        <item name="android:paddingTop">@dimen/padding_global_10dp</item>
+        <item name="android:paddingBottom">@dimen/padding_global_10dp</item>
+        <item name="android:background">@drawable/background_button_global</item>
+        <item name="android:minWidth">@dimen/margin_global_50dp</item>
+    </style>
+</resources>

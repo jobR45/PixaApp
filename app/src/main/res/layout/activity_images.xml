@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.anypli.pixabayapp.ui.images.ImagesViewModel" />
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.images.ImagesActivity">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_edit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardElevation="20dp"
+            app:cardCornerRadius="10dp"
+            android:backgroundTint="@color/gray_charcoal"
+            android:layout_marginStart="@dimen/margin_global_10dp"
+            android:layout_marginEnd="@dimen/margin_global_10dp"
+            android:layout_marginTop="@dimen/padding_global_15dp"
+
+            >
+
+            <EditText
+                android:id="@+id/edit_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_global_10dp"
+                android:layout_marginEnd="@dimen/margin_global_10dp"
+                android:text="@={viewModel.criteria}"
+                style="@style/EditText.Global"/>
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/margin_global_15dp"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/progress_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:id="@+id/empty_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_20dp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/empty_message"
+                android:visibility="gone"
+                style="@style/TextView.Black"/>
+
+            <TextView
+                android:id="@+id/error_text"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/btn_retry"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:gravity="center"
+                style="@style/TextView.Black"/>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_retry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_global_15dp"
+                android:layout_centerInParent="true"
+                android:text = "@string/global_retry"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:textColor="@color/white"
+                style="@style/Button.Global"/>
+
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_layout"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="@dimen/margin_global_50dp"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_paging"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

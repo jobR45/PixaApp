@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PixabayAPP</string>
+
+
+    <!-- Globals-->
+    <string name="global_yes">Yes</string>
+    <string name="global_no">No</string>
+    <string name="global_search">Search</string>
+    <string name="global_error_message">An error has occurred</string>
+    <string name="global_error_internet"> No internet Connexion found</string>
+
+
+    <!-- Image Activity -->
+    <string name="empty_message">No result found</string>
+    <string name="global_retry">Retry</string>
+</resources>
